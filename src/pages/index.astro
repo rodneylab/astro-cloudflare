@@ -6,17 +6,29 @@ const secret = await response.text();
 
 const publicResponse = await fetch(`${url}api-public`);
 const publicSecret = await publicResponse.text();
+
+const serverSecret = import.meta.env.SECRET;
+const postResponse = await fetch(`${url}api`, {
+	method: 'POST',
+	headers: { 'content-type': 'application/json' },
+	body: JSON.stringify({ secret: serverSecret })
+});
+const postSecret = await postResponse.text();
+
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		<p>{JSON.stringify({secret, publicSecret})}</p>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Astro</title>
+</head>
+
+<body>
+	<h1>Astro</h1>
+	<p>{JSON.stringify({secret, publicSecret, postSecret})}</p>
+</body>
+
 </html>
