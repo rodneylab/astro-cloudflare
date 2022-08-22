@@ -1,0 +1,17 @@
+{
+  "name": "astro-cloudflare",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro telemetry disable && astro build",
+    "preview": "wrangler pages dev ./dist",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^1.0.1",
+    "astro": "^1.0.6",
+    "wrangler": "^2.0.26"
+  }
+}
