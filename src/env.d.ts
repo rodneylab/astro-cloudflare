@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
 	readonly SECRET: string;
+	readonly PUBLIC_SECRET: string;
 }
 
 interface ImportMeta {

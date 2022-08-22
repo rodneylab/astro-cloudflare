@@ -3,6 +3,9 @@ const { url } = Astro;
 
 const response = await fetch(`${url}api`);
 const secret = await response.text();
+
+const publicResponse = await fetch(`${url}api-public`);
+const publicSecret = await publicResponse.text();
 ---
 
 <html lang="en">
@@ -14,6 +17,6 @@ const secret = await response.text();
 	</head>
 	<body>
 		<h1>Astro</h1>
-		<p>{JSON.stringify({secret})}</p>
+		<p>{JSON.stringify({secret, publicSecret})}</p>
 	</body>
 </html>
